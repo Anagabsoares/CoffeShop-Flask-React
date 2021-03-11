@@ -34,10 +34,11 @@ def create_app(test_config=None):
     # no permissions required
     def get_all_drinks():
         drinks = Drink.query.all()
+        
         try:
             return (
                 json.dumps(
-                    {"success": True, "drinks": [drink.short() for drink in drinks]}
+                    {"success": True, "drinks": [drink.title for drink in drinks]}
                 ),
                 200
             )
@@ -194,7 +195,7 @@ def create_app(test_config=None):
     def not_allowes(error):
         return (
             json.dumps(
-                {"success": False, "error": 405, "message": "not"}),
+                {"success": False, "error": 405, "message": "not authorized"}),
             401)   
 
     @app.errorhandler(401)

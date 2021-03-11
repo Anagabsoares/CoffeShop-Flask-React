@@ -4,14 +4,11 @@ from flask import request
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
-from dotenv import load_dotenv
-
-load_dotenv()
 
 
-AUTH0_DOMAIN = os.getenv("AUTH0_DOMAIN")
-ALGORITHMS = os.getenv("ALGORITHMS")
-API_AUDIENCE = os.getenv("API_AUDIENCE")
+AUTH0_DOMAIN = os.getenv("AUTH0_DOMAIN", "coffeeprojectudacity.us.auth0.com")
+ALGORITHMS = os.getenv("ALGORITHMS", ["RS256"])
+API_AUDIENCE = os.getenv("API_AUDIENCE", "http://localhost:5000")
 
 
 class AuthError(Exception):

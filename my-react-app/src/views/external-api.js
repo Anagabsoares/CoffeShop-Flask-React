@@ -1,21 +1,31 @@
-import React, { useState } from "react";
+import React, { useState , useEffect, Fragment} from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const ExternalApi = () => {
-  const [message, setMessage] = useState("");
-  const serverUrl = process.env.FLASK_APP_SERVER_URL;
+  const [drink, setDrinks] = useState([]);
+  const serverUrl = 'http://127.0.0.1:5000/';
 
   const { getAccessTokenSilently } = useAuth0();
 
   const callApi = async () => {
     try {
-      const response = await fetch(`${serverUrl}/api/messages/public-message`);
+      const response = await fetch(`${serverUrl}/drinks`);
 
       const responseData = await response.json();
 
-      setMessage(responseData.message);
+      const result = responseData.drinks
+
+      const ListResults = result.map((item, index)=> 
+        <li key={index}>
+          {item}
+        </li>
+        );
+      
+      console.log(result)
+
+      setDrinks(ListResults);
     } catch (error) {
-      setMessage(error.message);
+      setDrinks(error.drink);
     }
   };
 
@@ -23,8 +33,9 @@ const ExternalApi = () => {
     try {
       const token = await getAccessTokenSilently();
 
+      // create a function for each endpoint
       const response = await fetch(
-        `${serverUrl}/api/messages/protected-message`,
+        `${serverUrl}/drinks-detail`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -32,17 +43,30 @@ const ExternalApi = () => {
         }
       );
 
-      const responseData = await response.json();
+    const responseData = await response.json();
+    const result = responseData.drinks.map((i) => {
+      return(
+        <li key={i.id}>
+        {i.title}
+        </li>  
+      )    
+      })
+    setDrinks(result);
 
-      setMessage(responseData.message);
+    console.log(Object.values(responseData.drinks));
+
+    const final = responseData.drinks.map(({recipe}) => recipe)
+    console.log(final.name)
+    
+    console.log(final[1])
     } catch (error) {
-      setMessage(error.message);
+      setDrinks(error.drink);
     }
   };
 
   return (
     <div className="container">
-      <h1>GET DRINKS</h1>
+      <h1>DRINKS</h1>
       <p>
         Use these buttons to call an external API. The protected API call has an
         access token in its authorization header. The API server will validate
@@ -53,23 +77,26 @@ const ExternalApi = () => {
         role="group"
         aria-label="External API Requests Examples"
       >
-        <button type="button" className="btn btn-primary" onClick={callApi}>
-          Get Public Message
+        <button type="button"
+         className="btn btn-primary" 
+         onClick={callApi}
+        >
+          Get drinks
         </button>
         <button
           type="button"
           className="btn btn-primary"
           onClick={callSecureApi}
         >
-          Get Protected Message
+          Get Drinks detail
         </button>
       </div>
-      {message && (
+      {drink && (
         <div className="mt-5">
           <h6 className="muted">Result</h6>
           <div className="container-fluid">
             <div className="row">
-              <code className="col-12 text-light bg-dark p-4">{message}</code>
+              <code className="col-12 text-light bg-dark p-4">{drink}</code>
             </div>
           </div>
         </div>

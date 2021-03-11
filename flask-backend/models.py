@@ -1,17 +1,13 @@
 import os
-from dotenv import load_dotenv
 from sqlalchemy import Column, String, Integer
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-load_dotenv()
-DB_HOST = os.getenv('DB_HOST')  
-DB_USER = os.getenv('DB_USER')  
-DB_PASSWORD = os.getenv('DB_PASSWORD')  
-DB_NAME = os.getenv('DB_NAME')  
+DB_HOST = os.getenv('DB_HOST', 'localhost:5432')  
+DB_USER = os.getenv('DB_USER', 'anagabrielesoares')  
+DB_PASSWORD = os.getenv('DB_PASSWORD', 'postgres')  
+DB_NAME = os.getenv('DB_NAME', 'coffeeShop')  
 DATABASE_PATH = 'postgresql+psycopg2://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
-
-
 db = SQLAlchemy()
 '''
 setup_db(app)
@@ -35,18 +31,18 @@ class Drink(db.Model):
     # the required datatype is [{'color': string, 'name':string, 'parts':number}]
     recipe =  Column(String(180), nullable=False)
 
-    '''
-    short()
-        short form representation of the Drink model
-    '''
-    def short(self):
-        print(json.loads(self.recipe))
-        short_recipe = [{'color': r['color'], 'parts': r['parts']} for r in json.loads(self.recipe)]
-        return {
-            'id': self.id,
-            'title': self.title,
-            'recipe': short_recipe
-        }
+    # '''
+    # short()
+    #     short form representation of the Drink model
+    # '''
+    # # def short(self):
+    # #     print(json.loads(self.recipe))
+    # #     short_recipe = [{'color': r['color'], 'parts': r['parts']} for r in json.loads(self.recipe)]
+    # #     return {
+    # #         'id': self.id,
+    # #         'title': self.title,
+    # #         'recipe': short_recipe
+    # #     }
 
     '''
     long()

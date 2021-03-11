@@ -20,12 +20,12 @@ const MainNav = () => (
       Profile
     </NavLink>
     <NavLink
-      to="/drinks-detail"
+      to="/external-api"
       exact
       className="nav-link"
       activeClassName="router-link-exact-active"
     >
-     DRINKS MENU
+      External API
     </NavLink>
   </div>
 );

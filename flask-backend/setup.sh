@@ -1,0 +1,11 @@
+export FLASK_APP="app.py"
+export FLASK_ENV="development"
+export AUTH0_DOMAIN="coffeeprojectudacity.us.auth0.com"
+export ALGORITHMS=['RS256']
+export API_AUDIENCE="http://localhost:5000"
+export DB_HOST="localhost:5000"
+export DB_USER="anagabrielesoares"
+export DB_PASSWORD="postgres"
+export DB_NAME="coffeeShop"
+export DATABASE_PATH='postgresql+psycopg2://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
+export CLIENT_ORIGIN_URL="http://localhost:4040"
