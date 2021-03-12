@@ -1,13 +1,12 @@
-import React, { useState , useEffect, Fragment} from "react";
+import React, { Fragment, useState, Component } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const ExternalApi = () => {
   const [drink, setDrinks] = useState([]);
   const serverUrl = 'http://127.0.0.1:5000/';
-
   const { getAccessTokenSilently } = useAuth0();
 
-  const callApi = async () => {
+  const getDrinks = async () => {
     try {
       const response = await fetch(`${serverUrl}/drinks`);
 
@@ -29,7 +28,7 @@ const ExternalApi = () => {
     }
   };
 
-  const callSecureApi = async () => {
+  const getDetailjwt = async () => {
     try {
       const token = await getAccessTokenSilently();
 
@@ -52,17 +51,47 @@ const ExternalApi = () => {
       )    
       })
     setDrinks(result);
-
-    console.log(Object.values(responseData.drinks));
-
-    const final = responseData.drinks.map(({recipe}) => recipe)
-    console.log(final.name)
     
-    console.log(final[1])
+    } catch (error) {
+      setDrinks(error.error);
+    }
+  };
+
+
+ 
+
+  const postDrinksjwt= async () => {
+  
+    try {
+      const token = await getAccessTokenSilently();
+
+    
+
+      
+      const response = await fetch(
+        `${serverUrl}/post-drinks`,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body:JSON.stringify({
+            title: "",
+            recipe:{
+              color: "",
+              name:"",
+              parts:""
+            }
+          }) 
+        }
+      )
+      const responseData = await response.json();
+
     } catch (error) {
       setDrinks(error.drink);
     }
-  };
+  }
+
 
   return (
     <div className="container">
@@ -79,16 +108,22 @@ const ExternalApi = () => {
       >
         <button type="button"
          className="btn btn-primary" 
-         onClick={callApi}
+         onClick={getDrinks}
         >
           Get drinks
         </button>
         <button
           type="button"
           className="btn btn-primary"
-          onClick={callSecureApi}
+          onClick={getDetailjwt}
         >
           Get Drinks detail
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary"
+        >
+          Post Drink
         </button>
       </div>
       {drink && (
@@ -101,8 +136,44 @@ const ExternalApi = () => {
           </div>
         </div>
       )}
-    </div>
+      <Fragment>
+          <form > 
+            <div>
+              <label> drink's name </label>
+              <input
+                  type="text"
+                  name="title"
+                  placeholder="title"
+                  required
+              />
+            </div>
+            <div>
+              <label> drink's recipe </label>
+              <input
+                  type="text"
+                  name="color"
+                  required
+              />
+              <input
+                  type="text"
+                  name="name"
+                  required
+              />
+              <input
+                  type="text"
+                  name="parts"
+                  required
+              />
+            </div>   
+          </form>
+        </Fragment>
+    </div>    
+
+
+
+
+        
   );
 };
 
-export default ExternalApi;
+export default ExternalApi 
