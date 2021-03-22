@@ -1,14 +1,14 @@
-import React, { Fragment, useState, Component } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import React, { useState } from "react";
+
 
 const DrinkMenu = () => {
   const [drink, setDrinks] = useState([]);
-  const serverUrl = 'http://127.0.0.1:5000/';
+
  
 
   const getDrinks = async () => {
     try {
-      const response = await fetch(`${serverUrl}/drinks`);
+      const response = await fetch(`drinks`);
 
       const responseData = await response.json();
 
@@ -28,17 +28,10 @@ const DrinkMenu = () => {
     }
   };
 
-  
-
   return (
     <div className="container">
-      <h1>DRINKS</h1>
-      <p>
-        Use these buttons to call an external API. The protected API call has an
-        access token in its authorization header. The API server will validate
-        the access token using the Auth0 Audience value.
-      </p>
-      <div
+      <h1>    
+        <div
         className="btn-group mt-5"
         role="group"
         aria-label="External API Requests Examples"
@@ -47,11 +40,23 @@ const DrinkMenu = () => {
          className="btn btn-primary" 
          onClick={getDrinks}
         >
-          Get drinks
+          DRINK MENU
         </button>
-       </div> 
-    </div>    
-    
+      </div>  </h1>
+     
+  
+    {drink && (
+        <div className="mt-5">
+          <h6 className="muted">Result</h6>
+          <div className="container-fluid">
+            <div className="row">
+              <code className="col-12 text-light bg-dark p-4">{drink}</code>
+            </div>
+          </div>
+        </div>
+      )} 
+      
+    </div> 
   );
 };
 

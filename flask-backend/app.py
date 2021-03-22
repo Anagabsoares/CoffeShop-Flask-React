@@ -4,7 +4,8 @@ sys.path.append(os.getcwd())
 from flask import Flask, request, jsonify, abort
 from sqlalchemy import exc
 import json
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
+
 
 from models import setup_db, Drink
 from  auth import AuthError, requires_auth
@@ -13,16 +14,8 @@ from  auth import AuthError, requires_auth
 def create_app(test_config=None):
     app = Flask(__name__)
     setup_db(app)
-    CORS(app)
+    CORS(app, resources={r'/*': {"origins": ['http://localhost:4040']}})
 
-    def after_request(response):
-
-      response.headers.add(
-            "Access-Control-Allow-Headers", "Content-Type,Authorization,true")
-      response.headers.add(
-            "Acess-Control-Allow-Methods", "GET, POST,PUT, DELETE,PATCH, OPTIONS")
-      response.headers.add('Access-Control-Allow-Origin', '*')
-      return response
 
     @app.route('/login-results')  
     def login_results():

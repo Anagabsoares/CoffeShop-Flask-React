@@ -25,7 +25,15 @@ const MainNav = () => (
       className="nav-link"
       activeClassName="router-link-exact-active"
     >
-      External API
+      Settings
+    </NavLink>
+    <NavLink
+      to="/drink-menu"
+      exact
+      className="nav-link"
+      activeClassName="router-link-exact-active"
+    >
+      Drinks Menu
     </NavLink>
   </div>
 );
