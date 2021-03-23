@@ -27,11 +27,13 @@ const ExternalApi = () => {
     const result = responseData.drinks.map((i) => {
       return(
         <li key={i.id}>
-        {i.title}
+        [{i.id}] {i.title}
         </li>  
       )    
       })
     setDrinks(result);
+    console.log(responseData)
+    
     
     } catch (error) {
       setDrinks(error.error);

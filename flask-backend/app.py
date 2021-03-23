@@ -14,7 +14,7 @@ from  auth import AuthError, requires_auth
 def create_app(test_config=None):
     app = Flask(__name__)
     setup_db(app)
-    CORS(app, resources={r'/*': {"origins": ['http://localhost:4040']}})
+    CORS(app)
 
 
     @app.route('/login-results')  
@@ -24,7 +24,7 @@ def create_app(test_config=None):
 
 
     @app.route("/drinks", methods=["GET"])
-    # no permissions required
+    @cross_origin()
     def get_all_drinks():
         drinks = Drink.query.all()
         
@@ -48,19 +48,20 @@ def create_app(test_config=None):
             or appropriate status code indicating reason for failure
     """
 
-    @app.route("/drinks-post", methods=["POST"])
+    @app.route("/post-drinks", methods=["POST"])
     @requires_auth("post:drinks")
     def drink_post(jwt):
         body = dict(request.form or request.json or request.data)
         new_drink_title = body.get("title", None)
         new_recipe_drink = body.get("recipe", None)
+        if body is None:
+                abort(422)
         try:
             drink = Drink(title=new_drink_title, recipe=json.dumps([new_recipe_drink]))
             drink.insert()
             return(
                  json.dumps({"success": True, "newly_created_drink": drink.long()}), 200)
             
-
         except Exception:
             abort(422)
 
@@ -74,6 +75,7 @@ def create_app(test_config=None):
     """
 
     @app.route("/drinks-detail", methods=["GET"])
+    @cross_origin()
     @requires_auth("get:drinks-detail")
     def drinks_detail(jwt):
         drinks = Drink.query.all()
@@ -100,6 +102,7 @@ def create_app(test_config=None):
     """
 
     @app.route("/drinks-update/<int:id>", methods=["PATCH"])
+    @cross_origin()
     @requires_auth("patch:drinks")
     def update_drinks(jwt, id):
             id = id
@@ -135,6 +138,7 @@ def create_app(test_config=None):
     """
 
     @app.route("/drinks-delete/<int:drink_id>", methods=["DELETE"])
+    @cross_origin()
     @requires_auth("delete:drinks")
     def delete_drink(jwt, drink_id):
        
