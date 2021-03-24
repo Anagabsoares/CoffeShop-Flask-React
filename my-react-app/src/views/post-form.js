@@ -50,7 +50,7 @@ class PostDrink extends React.Component{
                 try {
                   const token = await getAccessTokenSilently();
                   console.log(token)
-                  const response = await axios.post(`/post-drinks`,inputData, {
+                  const response = await axios.post(`${serverUrl}/post-drinks`,inputData, {
                     headers: { Authorization: `Bearer ${token}`}})
                     .then(function(response){
                         console.log(response)
@@ -64,38 +64,39 @@ class PostDrink extends React.Component{
            return postAdrink()
         }  
 
-      update() {
-            let postAdrink= async () => {
+        getDetail() {
+            let getDrink = async () => {
                 const serverUrl = 'http://127.0.0.1:5000/';
                 const { getAccessTokenSilently } = this.props.auth0;
-                const inputData= {title: this.state.title,
-                            recipe:{color: this.state.color,
-                            name: this.state.name, parts: this.state.parts}}
     
-
-                console.log(inputData)
                 try {
                   const token = await getAccessTokenSilently();
                   console.log(token)
-                  const response = await axios.patch(`/drinks-update`,inputData,{
+                  const response = await axios.get(`${serverUrl}/drinks-detail`, {
                     headers: { Authorization: `Bearer ${token}`}})
-                    .then(function(response){
-                        console.log(response)
+                    .then(response => {
+                        const listDrink = response.data
+                        const result = listDrink.drinks.map((item, index)=> (<li key={index}>{item.title}</li>))
+                        console.log(listDrink)
+                        console.log(result)
+
+
                     })
                 } catch (error){
                     console.error(error.response)
                 
                 }
             }  
-                
-           return postAdrink()
-        }  
-           
+            return getDrink() 
+        }
+
+     
+
     
 
     render() {
         return(
-            <div>
+        <div>
             <div>
                 <h1>POST</h1>
                 <input type="text" value={this.state.title} placeholder="title" name ="title" onChange={this.handleChange} /> <b/>  <b/> 
@@ -105,15 +106,15 @@ class PostDrink extends React.Component{
                 <button onClick={()=>{this.post()}} >POST</button>
             </div>
             <div>
-                <h1>Update</h1>
-                <input type="text" value={this.state.title} placeholder="title" name ="title" onChange={this.handleChange} /> <b/>  <b/> 
-                <input type="text" value={this.state.color} placeholder="color" name="color" onChange={this.handleChange} /> <b/>  <b/>
-                <input type="text" value={this.state.name} placeholder="ingredient name" name="name" onChange={this.handleChange} /> <b/>  <b/>
-                <input type="text" value={this.state.parts} placeholder="parts" name="parts" onChange={this.handleChange} /> <b/>  <b/>
-                <button onClick={()=>{this.update()}} >Update</button>
-                </div>
+                <button
+                type="button"
+                className="btn btn-primary"
+                onClick={()=>{this.getDetail()}}
+                >
+                Get Drinks detail
+                </button>
             </div> 
-            
+        </div>   
         )
     }
 

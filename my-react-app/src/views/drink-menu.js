@@ -3,12 +3,12 @@ import React, { useState } from "react";
 
 const DrinkMenu = () => {
   const [drink, setDrinks] = useState([]);
-
+  const serverUrl = 'http://127.0.0.1:5000/';
  
 
   const getDrinks = async () => {
     try {
-      const response = await fetch(`drinks`);
+      const response = await fetch(`${serverUrl}\drinks`);
 
       const responseData = await response.json();
 

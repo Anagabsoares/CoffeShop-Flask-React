@@ -79,14 +79,14 @@ class CoffeTestCase(unittest.TestCase):
     def test_post_drink(self):
         # title should be unique- make sure to change it before running the test file
       new_drink= {
-            "title":"Drink",
+            "title":"Orange Juice",
             "recipe": {
-                'color' : "white",
-                'name' : 'vodca',
+                'color' : "orange",
+                'name' : 'orange',
                 'parts': '1'} 
             }
  
-      res = self.client().post("/drinks-post",  headers = {'Authorization':'Bearer {}'.format(self.TOKEN_MANAGER)}, json=new_drink)
+      res = self.client().post("/post-drinks",  headers = {'Authorization':'Bearer {}'.format(self.TOKEN_MANAGER)}, json=new_drink)
       data = json.loads(res.data)
       print("POST DATA", data)
      

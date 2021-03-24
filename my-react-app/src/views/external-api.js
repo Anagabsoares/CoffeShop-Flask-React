@@ -12,10 +12,11 @@ const ExternalApi = () => {
   const getDetailjwt = async () => {
     try {
       const token = await getAccessTokenSilently();
+      const serverUrl = 'http://127.0.0.1:5000/';
 
       // create a function for each endpoint
       const response = await fetch(
-        `drinks-detail`,
+        `${serverUrl}\drinks-detail`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -24,9 +25,10 @@ const ExternalApi = () => {
       );
 
     const responseData = await response.json();
-    const result = responseData.drinks.map((i) => {
+ 
+    const result = responseData.drinks.map((i, index) => {
       return(
-        <li key={i.id}>
+        <li key={index}>
         [{i.id}] {i.title}
         </li>  
       )    
