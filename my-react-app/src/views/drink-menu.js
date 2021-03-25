@@ -20,7 +20,7 @@ const DrinkMenu = () => {
         </li>
         );
       
-      console.log(result)
+      console.log(responseData)
 
       setDrinks(ListResults);
     } catch (error) {

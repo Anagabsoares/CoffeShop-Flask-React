@@ -5,18 +5,18 @@ import axios from 'axios';
 
 
 
+
 class PostDrink extends React.Component{
     constructor(props){
         super(props);
         this.state=({
+            id:'',
             title: '',
             color: '',
             name: '',
             parts: ''
 
-        }
-
-        )
+        })
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,10 +27,9 @@ class PostDrink extends React.Component{
         const value =  event.target.value 
         this.setState({
         [event.target.name]: value})
-    
         
       }
-    
+
       handleSubmit(event) {
         alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
@@ -64,63 +63,95 @@ class PostDrink extends React.Component{
            return postAdrink()
         }  
 
-        getDetail() {
-            let getDrink = async () => {
-                const serverUrl = 'http://127.0.0.1:5000/';
-                const { getAccessTokenSilently } = this.props.auth0;
-    
-                try {
-                  const token = await getAccessTokenSilently();
-                  console.log(token)
-                  const response = await axios.get(`${serverUrl}/drinks-detail`, {
-                    headers: { Authorization: `Bearer ${token}`}})
-                    .then(response => {
-                        const listDrink = response.data
-                        const result = listDrink.drinks.map((item, index)=> (<li key={index}>{item.title}</li>))
-                        console.log(listDrink)
-                        console.log(result)
-
-
-                    })
-                } catch (error){
-                    console.error(error.response)
+       update(){
+        let updateAdrink= async () => {
+            const serverUrl = 'http://127.0.0.1:5000/';
+            const { getAccessTokenSilently } = this.props.auth0;
+            const inputData= {title: this.state.title,
+                        recipe:{color: this.state.color,
+                        name: this.state.name, parts: this.state.parts}}
                 
-                }
-            }  
-            return getDrink() 
-        }
+            const id = this.state.id
+            console.log(id)
+            console.log(inputData)
+    
+            try {
+              const token = await getAccessTokenSilently();
+              console.log(token)
+              const response = await axios.patch(`${serverUrl}/drinks-update/${this.state.id}`,inputData, {
+                headers: { Authorization: `Bearer ${token}`}})
+                .then(function(response){
+                    console.log(response)
+                })
+            } catch (error){
+                console.error(error.response)
+            
+            }
+        }  
+            
+       return updateAdrink()
+ 
+       }
 
+
+       delete(){
+        let deleteAdrink= async () => {
+            const serverUrl = 'http://127.0.0.1:5000/';
+            const { getAccessTokenSilently } = this.props.auth0;
+            const id = this.state.id
+            console.log(id)
+         
+            try {
+              const token = await getAccessTokenSilently();
+              console.log(token)
+              const response = await axios.delete(`${serverUrl}/drinks-delete/${id}`,{
+                headers: { Authorization: `Bearer ${token}`}})
+                .then(function(response){
+                    console.log(response)
+                })
+            } catch (error){
+                console.error(error.response)
+            
+            }
+        }  
+            
+       return deleteAdrink()
+
+        
+       }
      
 
-    
 
     render() {
         return(
         <div>
             <div>
-                <h1>POST</h1>
+                <input type="text" value={this.state.id} placeholder="drink id" name ="id" onChange={this.handleChange} /> <b/>  <b/> 
                 <input type="text" value={this.state.title} placeholder="title" name ="title" onChange={this.handleChange} /> <b/>  <b/> 
                 <input type="text" value={this.state.color} placeholder="color" name="color" onChange={this.handleChange} /> <b/>  <b/>
                 <input type="text" value={this.state.name} placeholder="ingredient name" name="name" onChange={this.handleChange} /> <b/>  <b/>
                 <input type="text" value={this.state.parts} placeholder="parts" name="parts" onChange={this.handleChange} /> <b/>  <b/>
-                <button onClick={()=>{this.post()}} >POST</button>
+                
             </div>
             <div>
-                <button
-                type="button"
-                className="btn btn-primary"
-                onClick={()=>{this.getDetail()}}
-                >
-                Get Drinks detail
-                </button>
-            </div> 
-        </div>   
-        )
-    }
+                <button onClick={()=>{this.post()}} >POST</button><b/><b/>
+                <button onClick={()=>{this.update()}} >UPDATE</button><b/><b/>
+                <button onClick={()=>{this.delete()}} >DELETE</button><b/><b/>
+            </div>
+           
+              
+        
+           
+        </div>    
+        
+  );
 
-
+}
 };
     
  
 export default withAuth0(PostDrink)
+
+
+
 
