@@ -20,7 +20,7 @@ const MainNav = () => (
       Profile
     </NavLink>
     <NavLink
-      to="/post-form"
+      to="/setting-drinks"
       exact
       className="nav-link"
       activeClassName="router-link-exact-active"

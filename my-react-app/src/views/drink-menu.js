@@ -20,7 +20,6 @@ const DrinkMenu = () => {
         </li>
         );
       
-      console.log(responseData)
 
       setDrinks(ListResults);
     } catch (error) {
@@ -30,30 +29,26 @@ const DrinkMenu = () => {
 
   return (
     <div className="container">
-      <h1>    
-        <div
-        className="btn-group mt-5"
-        role="group"
-        aria-label="External API Requests Examples"
-      >
-        <button type="button"
-         className="btn btn-primary" 
-         onClick={getDrinks}
-        >
-          DRINK MENU
-        </button>
-      </div>  </h1>
-     
-  
+    
     {drink && (
-        <div className="mt-5">
-          <h6 className="muted">Result</h6>
-          <div className="container-fluid">
-            <div className="row">
-              <code className="col-12 text-light bg-dark p-4">{drink}</code>
-            </div>
-          </div>
-        </div>
+         <div className='row mr-5'>
+         <table className="table">
+             <thead>
+               <tr>
+                 <th scope="col">
+                 <button type="button" className="btn-dark mr-4" onClick={getDrinks}>Drinks</button>
+                 </th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <th scope="row" ></th>
+                 <td>{drink}</td>
+  
+               </tr>
+             </tbody>
+         </table>
+       </div>
       )} 
       
     </div> 

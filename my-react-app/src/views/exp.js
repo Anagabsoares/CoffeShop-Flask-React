@@ -42,7 +42,6 @@ const ExternalApi = () => {
   };
 
 
-
   return (
     <div className="container">
       <h1>DRINKS</h1>
@@ -66,12 +65,12 @@ const ExternalApi = () => {
         </button>
       
       </div>
-      {drink && (
+      {d && (
         <div className="mt-5">
           <h6 className="muted">Result</h6>
           <div className="container-fluid">
             <div className="row">
-              <code className="col-12 text-light bg-dark p-4">{drink}</code>
+              <code className="col-12 text-light bg-dark p-4">{{this.state.drinks.map(drink => <li>{JSON.stringify(drink.recipe)} {drink.id}  </li> )}}</code>
             </div>
           </div>
         </div>

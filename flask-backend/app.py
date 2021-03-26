@@ -55,13 +55,15 @@ def create_app(test_config=None):
         body = dict(request.form or request.json or request.data)
         new_drink_title = body.get("title", None)
         new_recipe_drink = body.get("recipe", None)
-
+        if new_drink_title is  '':
+            abort(422)
         
         try:
+            
             drink = Drink(title=new_drink_title, recipe=json.dumps([new_recipe_drink]))
+            
             drink.insert()
-            if body is None:
-                abort(422)
+           
             return(
                  json.dumps({"success": True, "newly_created_drink": drink.long()}), 200)
             

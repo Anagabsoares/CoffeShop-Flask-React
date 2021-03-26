@@ -9,34 +9,40 @@ class ExternalaApi extends React.Component {
   
 
  componentDidMount(){
-     const serverUrl = 'http://127.0.0.1:5000/';
-     const { getAccessTokenSilently } = this.props.auth0;
-     const token = getAccessTokenSilently();
-     try{
-      axios.get( `${serverUrl}\drinks`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    ).then(res => {
-      console.log(res)
-      this.setState({drinks:res.data.drinks})
-      console.log(this.state.drinks)
+  
+    let getDrink= async () => {
+      const serverUrl = 'http://127.0.0.1:5000/';
+      const { getAccessTokenSilently } = this.props.auth0;
      
-    })
-  } catch (error){
-    console.error(error.res)
-}
-
-
+      try{
+        const token = await getAccessTokenSilently();
+        console.log(token)
+        const response = await axios.get( `${serverUrl}\drinks-detail`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        ).then(res => {
+          console.log(res)
+          this.setState({drinks:res.data.drinks})
+          console.log(this.state.drinks.map(drink =>
+            drink.recipe
+          ))
+        
+        })
+    } catch (error){
+      console.error(error.res)
+    }  
+    }
+    return getDrink()
  }
 
  render(){
 
   return(
    <ul>
-    {this.state.drinks.map(drink => <li></li> )}
+    {this.state.drinks.map(drink => <li>{JSON.stringify(drink.recipe)} {drink.id}  </li> )}
    </ul>
   )
  }
