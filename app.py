@@ -12,7 +12,7 @@ from  auth import AuthError, requires_auth
 
 
 def create_app(test_config=None):
-    app = Flask(__name__,static_folder='./my-react-app/build', statict_url_path='/')
+    app = Flask(__name__,static_folder='./my-react-app/build', static_url_path='/')
     setup_db(app)
     CORS(app)
 
@@ -217,4 +217,4 @@ def create_app(test_config=None):
 app = create_app()
 
 if __name__=='__main__':
-        app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80) )
+        app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 8000) )
