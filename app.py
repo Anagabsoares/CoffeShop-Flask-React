@@ -212,10 +212,10 @@ def create_app(test_config=None):
         response.status_code = error.status_code
         return response
 
-    if __name__=='__main__':
-        app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80) )
-
+    
     return app
 
 app = create_app()
 
+if __name__=='__main__':
+        app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80) )
