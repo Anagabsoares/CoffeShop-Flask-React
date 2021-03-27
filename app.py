@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, abort
 from sqlalchemy import exc
 import json
 from flask_cors import CORS, cross_origin
+import ./my-react-app/
 
 
 from models import setup_db, Drink
@@ -169,9 +170,7 @@ def create_app(test_config=None):
 
     @app.errorhandler(404)
     def not_found(error):
-        return (
-                json.dumps({"success": False, "error": 404, "message": "Not found"}),
-                 404)
+        return app.send_static_file('index.html')
 
     @app.errorhandler(422)
     def unprocessable(error):
@@ -193,12 +192,7 @@ def create_app(test_config=None):
                 {"success": False, "error": 500, "message": "internal server error"}),
             500)
        
-    @app.errorhandler(401)
-    def not_allowes(error):
-        return (
-            json.dumps(
-                {"success": False, "error": 405, "message": "not authorized"}),
-            401)   
+  
 
     @app.errorhandler(401)
     def unauthorized_error(error):
@@ -218,9 +212,10 @@ def create_app(test_config=None):
         response.status_code = error.status_code
         return response
 
+    if __name__=='__main__':
+        app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80) )
+
     return app
 
 app = create_app()
 
-if __name__=='__main__':
-    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80) )
