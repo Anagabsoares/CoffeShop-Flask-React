@@ -3,10 +3,6 @@ import { useAuth0,withAuth0, withAuthenticationRequired} from "@auth0/auth0-reac
 import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
 
-
-
-
-
 class SettingDrinks extends React.Component{
     constructor(props){
         super(props);
@@ -17,8 +13,6 @@ class SettingDrinks extends React.Component{
             color: '',
             name: '',
             parts: '',
-         
-
         })
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -132,11 +126,9 @@ class SettingDrinks extends React.Component{
         }  
             
        return deleteAdrink()
-
+      //  change url
         
        }
-     
-
 
     render() {
         return(
@@ -148,7 +140,6 @@ class SettingDrinks extends React.Component{
               <button type="button" className="btn btn-outline-danger" onClick={()=>{this.delete()}}>delete</button>
             </div>
           </div>
-
 
           <div className="mb-3">
             <label className="form-label">Title</label>
