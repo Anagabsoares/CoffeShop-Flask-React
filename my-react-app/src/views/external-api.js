@@ -11,7 +11,7 @@ class ExternalaApi extends React.Component {
  componentDidMount(){
   
     let getDrink= async () => {
-      const serverUrl = 'http://https://coffeeshopcreepy.herokuapp.com';
+      const serverUrl = 'https://coffeeshopcreepy.herokuapp.com';
       const { getAccessTokenSilently } = this.props.auth0;
      
       try{
