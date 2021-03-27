@@ -9,7 +9,7 @@ const ExternalApi = () => {
   const getDetailjwt = async () => {
     try {
       const token = await getAccessTokenSilently();
-      const serverUrl = 'http://127.0.0.1:5000/';
+      const serverUrl = 'https://coffeeshopcreepy.herokuapp.com';
 
       // create a function for each endpoint
       const response = await fetch(

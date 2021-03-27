@@ -37,7 +37,7 @@ class SettingDrinks extends React.Component{
 
       getDrink(){
         let getDrink= async () => {
-          const serverUrl = 'http://127.0.0.1:5000/';
+          const serverUrl = 'https://coffeeshopcreepy.herokuapp.com';
           const { getAccessTokenSilently } = this.props.auth0;
          
           try{
