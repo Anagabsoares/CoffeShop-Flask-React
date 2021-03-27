@@ -12,15 +12,15 @@ from  auth import AuthError, requires_auth
 
 
 def create_app(test_config=None):
-    app = Flask(__name__)
+    app = Flask(__name__,static_folder='./build', statict_url_path='/')
     setup_db(app)
     CORS(app)
 
 
-    @app.route('/login-results')  
-    def login_results():
+    @app.route('/')  
+    def index():
    
-        return {"greeting":"Welcome to Coffee Shop!"}
+        return app.send_static_file('index.html')
 
 
     @app.route("/drinks", methods=["GET"])
@@ -221,3 +221,6 @@ def create_app(test_config=None):
     return app
 
 app = create_app()
+
+if __name__=='__main__':
+    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80) )
