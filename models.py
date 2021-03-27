@@ -3,17 +3,18 @@ from sqlalchemy import Column, String, Integer
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-DB_HOST = os.getenv('DB_HOST', 'localhost:5432')  
-DB_USER = os.getenv('DB_USER', 'anagabrielesoares')  
-DB_PASSWORD = os.getenv('DB_PASSWORD', 'postgres')  
-DB_NAME = os.getenv('DB_NAME', 'coffeeShop')  
-DATABASE_PATH = 'postgresql+psycopg2://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
+# DB_HOST = os.getenv('DB_HOST', 'localhost:5432')  
+# DB_USER = os.getenv('DB_USER', 'anagabrielesoares')  
+# DB_PASSWORD = os.getenv('DB_PASSWORD', 'postgres')  
+# DB_NAME = os.getenv('DB_NAME', 'coffeeShop')  
+# DATABASE_= 'postgresql+psycopg2://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
+DATABASE_URL= "postgres://vobzqgznjkgzqa:21db1e1ee2aff45e5cbbf92d81140d50dd3110d8787d569df31513223a693434@ec2-3-211-37-117.compute-1.amazonaws.com:5432/d6js2ev6qe5mfh"
 db = SQLAlchemy()
 '''
 setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
-def setup_db(app, DATABASE_PATH=DATABASE_PATH):
+def setup_db(app, DATABASE_PATH=DATABASE_URL):
     app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_PATH
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
