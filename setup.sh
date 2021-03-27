@@ -9,3 +9,4 @@ export DB_PASSWORD="postgres"
 export DB_NAME="coffeeShop"
 export DATABASE_PATH='postgresql+psycopg2://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
 export CLIENT_ORIGIN_URL="http://localhost:4040"
+export FLASK_CONFIG="heroku"
