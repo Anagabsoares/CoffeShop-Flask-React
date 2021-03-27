@@ -37,7 +37,7 @@ class SettingDrinks extends React.Component{
 
       getDrink(){
         let getDrink= async () => {
-          const serverUrl = 'https://coffeeshopcreepy.herokuapp.com';
+          const serverUrl = 'https://coffeeshopcreepy.herokuapp.com/';
           const { getAccessTokenSilently } = this.props.auth0;
          
           try{
@@ -62,7 +62,7 @@ class SettingDrinks extends React.Component{
     
       post() {
             let postAdrink= async () => {
-                const serverUrl = 'http://127.0.0.1:5000/';
+                const serverUrl = "https://coffeeshopcreepy.herokuapp.com/";
                 const { getAccessTokenSilently } = this.props.auth0;
                 const inputData= {title: this.state.title,
                             recipe:{color: this.state.color,
@@ -86,7 +86,7 @@ class SettingDrinks extends React.Component{
 
        update(){
         let updateAdrink= async () => {
-            const serverUrl = 'http://127.0.0.1:5000/';
+            const serverUrl = "https://coffeeshopcreepy.herokuapp.com/";
             const { getAccessTokenSilently } = this.props.auth0;
             const inputData= {title: this.state.title,
                         recipe:{color: this.state.color,
@@ -113,7 +113,7 @@ class SettingDrinks extends React.Component{
 
        delete(){
         let deleteAdrink= async () => {
-            const serverUrl = 'http://127.0.0.1:5000/';
+            const serverUrl = "https://coffeeshopcreepy.herokuapp.com/";
             const { getAccessTokenSilently } = this.props.auth0;
             const id = this.state.id
          

@@ -3,12 +3,12 @@ import React, { useState } from "react";
 
 const DrinkMenu = () => {
   const [drink, setDrinks] = useState([]);
-  const serverUrl = 'https://coffeeshopcreepy.herokuapp.com';
+  const serverUrl = 'https://coffeeshopcreepy.herokuapp.com/';
  
 
   const getDrinks = async () => {
     try {
-      const response = await fetch(`${serverUrl}/drinks`);
+      const response = await fetch(`${serverUrl}\drinks`);
 
       const responseData = await response.json();
 
