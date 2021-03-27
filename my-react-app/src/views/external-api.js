@@ -11,13 +11,13 @@ class ExternalaApi extends React.Component {
  componentDidMount(){
   
     let getDrink= async () => {
-      const serverUrl = 'https://coffeeshopcreepy.herokuapp.com';
+      const serverUrl = 'https://coffeeshopcreepy.herokuapp.com/';
       const { getAccessTokenSilently } = this.props.auth0;
      
       try{
         const token = await getAccessTokenSilently();
         console.log(token)
-        const response = await axios.get( `${serverUrl}/drinks-detail`,
+        const response = await axios.get( `${serverUrl}\drinks-detail`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

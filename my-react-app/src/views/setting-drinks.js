@@ -37,7 +37,7 @@ class SettingDrinks extends React.Component{
 
       getDrink(){
         let getDrink= async () => {
-          const serverUrl = 'https://coffeeshopcreepy.herokuapp.com/';
+          const serverUrl = 'https://coffeeshopcreepy.herokuapp.com';
           const { getAccessTokenSilently } = this.props.auth0;
          
           try{
@@ -62,7 +62,7 @@ class SettingDrinks extends React.Component{
     
       post() {
             let postAdrink= async () => {
-                const serverUrl = "https://coffeeshopcreepy.herokuapp.com/";
+                const serverUrl = "https://coffeeshopcreepy.herokuapp.com";
                 const { getAccessTokenSilently } = this.props.auth0;
                 const inputData= {title: this.state.title,
                             recipe:{color: this.state.color,
@@ -70,7 +70,7 @@ class SettingDrinks extends React.Component{
     
                 try {
                   const token = await getAccessTokenSilently();
-                  const response = await axios.post(`${serverUrl}/post-drinks`,inputData, {
+                  const response = await axios.post(`${serverUrl}\post-drinks`,inputData, {
                     headers: { Authorization: `Bearer ${token}`}})
                     .then(function(response){
                         console.log(response)
