@@ -62,7 +62,7 @@ class SettingDrinks extends React.Component{
     
       post() {
             let postAdrink= async () => {
-                const serverUrl = "https://coffeeshopcreepy.herokuapp.com";
+                const serverUrl = 'https://coffeeshopcreepy.herokuapp.com';
                 const { getAccessTokenSilently } = this.props.auth0;
                 const inputData= {title: this.state.title,
                             recipe:{color: this.state.color,
