@@ -8,7 +8,7 @@ const DrinkMenu = () => {
 
   const getDrinks = async () => {
     try {
-      const response = await fetch(`${serverUrl}\drinks`);
+      const response = await fetch(`${serverUrl}/drinks`);
 
       const responseData = await response.json();
 

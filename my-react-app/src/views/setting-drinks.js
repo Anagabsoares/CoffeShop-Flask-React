@@ -42,7 +42,7 @@ class SettingDrinks extends React.Component{
          
           try{
             const token = await getAccessTokenSilently();
-            const response = await axios.get( `${serverUrl}\drinks-detail`,
+            const response = await axios.get( `${serverUrl}/drinks-detail`,
               {
                 headers: {
                   Authorization: `Bearer ${token}`,

@@ -17,7 +17,7 @@ class ExternalaApi extends React.Component {
       try{
         const token = await getAccessTokenSilently();
         console.log(token)
-        const response = await axios.get( `${serverUrl}\drinks-detail`,
+        const response = await axios.get( `${serverUrl}/drinks-detail`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
