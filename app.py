@@ -5,7 +5,6 @@ from flask import Flask, request, jsonify, abort
 from sqlalchemy import exc
 import json
 from flask_cors import CORS, cross_origin
-import ./my-react-app/
 
 
 from models import setup_db, Drink
@@ -13,7 +12,7 @@ from  auth import AuthError, requires_auth
 
 
 def create_app(test_config=None):
-    app = Flask(__name__,static_folder='./build', statict_url_path='/')
+    app = Flask(__name__,static_folder='./my-react-app/build', statict_url_path='/')
     setup_db(app)
     CORS(app)
 
