@@ -27,5 +27,4 @@ yarn-error.log*
 /venv
 
 *__pycache__
-build
 .env
