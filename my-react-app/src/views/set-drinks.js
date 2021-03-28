@@ -134,9 +134,9 @@ class SettingDrinks extends React.Component{
         return(
         <div>
           <div>
-          <label  className="form-label" value={this.state.id}>Drink Id</label>
+          <label  className="form-label">Drink Id</label>
             <div className="input-group mb-3">
-              <input type="text" className="form-control" placeholder="eg. 67" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+              <input type="text" className="form-control" placeholder="eg. 67" aria-label="Recipient's username" aria-describedby="button-addon2" value={this.state.id}/>
               <button type="button" className="btn btn-outline-danger" onClick={()=>{this.delete()}}>delete</button>
             </div>
           </div>
