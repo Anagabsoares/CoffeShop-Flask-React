@@ -137,8 +137,8 @@ class SettingDrinks extends React.Component{
             <div className="input-group mb-3">
               <input type="text" className="form-control" placeholder="eg. 67" name="id" value={this.state.id} onChange={this.handleChange} aria-label="Recipient's username" aria-describedby="button-addon2"/>
               <button type="button" className="btn btn-outline-danger" onClick={()=>{this.delete()}}>delete</button>
-              <small id="emailHelp" class="form-text text-muted">Only required for updates and deletes</small>
             </div>
+            <small id="emailHelp" class="form-text text-muted">Only required for updates and deletes</small>
           </div>
 
           <div className="mb-3">
