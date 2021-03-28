@@ -73,8 +73,7 @@ class SettingDrinks extends React.Component{
                     console.error(error.response)
                 
                 }
-            }  
-                
+            }        
            return postAdrink()
         }  
 
@@ -132,13 +131,13 @@ class SettingDrinks extends React.Component{
     render() {
         return(
         <div>
-          <div>
+          <div>   
           <label  className="form-label">Drink Id</label>
-            <div className="input-group mb-3">
+          <small id="emailHelp" className="form-text text-muted ">Only required for updates and deletes</small>
+            <div className="input-group">
               <input type="text" className="form-control" placeholder="eg. 67" name="id" value={this.state.id} onChange={this.handleChange} aria-label="Recipient's username" aria-describedby="button-addon2"/>
               <button type="button" className="btn btn-outline-danger" onClick={()=>{this.delete()}}>delete</button>
             </div>
-            <small id="emailHelp" class="form-text text-muted">Only required for updates and deletes</small>
           </div>
 
           <div className="mb-3">
