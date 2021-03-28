@@ -89,7 +89,7 @@ class SettingDrinks extends React.Component{
             const id = this.state.id
             try {
               const token = await getAccessTokenSilently();
-              const response = await axios.patch(`${serverUrl}/drinks-update/${this.state.id}`,inputData, {
+              const response = await axios.patch(`${serverUrl}\drinks-update\${this.state.id}`,inputData, {
                 headers: { Authorization: `Bearer ${token}`}})
                 .then(function(response){
                     console.log(response)
@@ -114,7 +114,7 @@ class SettingDrinks extends React.Component{
             try {
               const token = await getAccessTokenSilently();
               console.log(token)
-              const response = await axios.delete(`${serverUrl}/drinks-delete/${id}`,{
+              const response = await axios.delete(`${serverUrl}\drinks-delete\${id}`,{
                 headers: { Authorization: `Bearer ${token}`}})
                 .then(function(response){
                     console.log(response)
