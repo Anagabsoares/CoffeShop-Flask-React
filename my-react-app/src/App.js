@@ -24,7 +24,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <ProtectedRoute path="/profile" component={Profile} />
-          <ProtectedRoute path="/setting-drinks" component={SettingDrinks} />
+          <ProtectedRoute path="/set-drinks" component={SettingDrinks} />
           <ProtectedRoute path="/drink-menu" component={DrinkMenu} />
         </Switch>
       </div>
