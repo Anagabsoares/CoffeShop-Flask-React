@@ -14,7 +14,7 @@ This is a simple REACTJS + FLASK application, build to attend the specification 
 
 The premise of the projct's API is to store, get, updade and delete  drinks recipes, the permission to access the information will be according to the users's role.
 The user can be assigned to barist or manager roles.
-The manager is allowed to access the menu (public get request), get drinks details (authorization required), delete drinks (authorization required), and update drinks (authorization required). The barist is only assigned to the public get request and to get drinks details.
+The manager is allowed to access the menu (public get request), get drinks details (authorization required), delete drinks (authorization required), and update drinks (authorization required). The barist is only assigned to a public get-method request and to get drinks detail.
 
 Each drink will have the following attibutes:
 
@@ -118,12 +118,11 @@ http://127.0.0.1:5000/drinks-detail
 - Add drinks (POST Method) - it requires permission post:drinks:
 
 
-
 ```bash
 http://127.0.0.1:5000/post-drinks
 ```
 
-Request requirements 
+Request requirements:
 ```bash
 body:
 {
@@ -147,7 +146,7 @@ headers:
 ```bash
 http://127.0.0.1:5000/drinks-update/[id]
 ```
-
+Request requirements:
 ```bash
 body:
 {
