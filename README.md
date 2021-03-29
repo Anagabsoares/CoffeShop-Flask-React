@@ -60,7 +60,7 @@ Tests have been created in order to test  the behavior of the endpoints.
 In the project forlder, run the following:
 
 ```bash
-python test_api.py
+python3 test_api.py
 ```
 
 
