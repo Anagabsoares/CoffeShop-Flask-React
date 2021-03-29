@@ -69,7 +69,7 @@ python3 test_api.py
 
 1. Login into app
 
-Acessing  the app and testisting  the endpoints that requires  specific permissions, two email accounts were created specially for reviewers.
+To access a and test the api through the fontend interface, two email accounts were created specially for reviewers.
 
 Manager Login (can get details,  add, edit, remove drinks from database)
 
