@@ -1,7 +1,7 @@
 import React from "react";
 import MainNav from "./main-nav";
 import AuthNav from "./auth-nav";
-import "./App.css";
+
 
 
 const NavBar = () => {
@@ -9,7 +9,7 @@ const NavBar = () => {
     <div className="nav-container mb-3">
       <nav className="navbar navbar-expand-md navbar-light bg-light">
         <div className="container">
-          <div className="logo-coffe" />
+          <div className= "logo-coffee" />
           <MainNav />
           <AuthNav />
         </div>
