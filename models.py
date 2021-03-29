@@ -8,7 +8,7 @@ import json
 # DB_PASSWORD = os.getenv('DB_PASSWORD', 'postgres')  
 # DB_NAME = os.getenv('DB_NAME', 'coffeeShop')  
 # DATABASE_= 'postgresql+psycopg2://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
-DATABASE_URL= "postgres://vobzqgznjkgzqa:21db1e1ee2aff45e5cbbf92d81140d50dd3110d8787d569df31513223a693434@ec2-3-211-37-117.compute-1.amazonaws.com:5432/d6js2ev6qe5mfh"
+DATABASE_URL= "postgres://ovunxygauyjgix:332cd4d6f59cb950ad5e33925caa408f9b20209d67118024063770c67ed9cec4@ec2-18-206-20-102.compute-1.amazonaws.com:5432/dad7un9d110hqg"
 db = SQLAlchemy()
 '''
 setup_db(app)
