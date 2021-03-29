@@ -103,7 +103,6 @@ class SettingDrinks extends React.Component{
  
        }
 
-
        delete(){
         let deleteAdrink= async () => {
             const serverUrl = "https://coffeeshopcreepy.herokuapp.com/";
@@ -124,7 +123,6 @@ class SettingDrinks extends React.Component{
         }  
             
        return deleteAdrink()
-      //  change url
         
        }
 
