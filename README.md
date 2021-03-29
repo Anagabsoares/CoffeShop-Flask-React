@@ -33,7 +33,7 @@ Python 3.9
 Follow instructions to install the latest version of python for your platform in the python docs
 
 Virtual Enviornment
-We recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organaized. Instructions for setting up a virual enviornment for your platform can be found in the python docs
+We recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organized. Instructions for setting up a virual enviornment for your platform can be found in the python docs
 
 PIP Dependencies
 Once you have your virtual environment setup and running, install dependencies by naviging to the /backend directory and running:
