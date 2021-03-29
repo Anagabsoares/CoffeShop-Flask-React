@@ -89,16 +89,16 @@ Base URL:
 [https://coffeeshopcreepy.herokuapp.com/](https://coffeeshopcreepy.herokuapp.com/)
 
 HTTP Status Code
-200 - OK 
-400 - Bad Request 
-401 - Unauthorized 
-403 - Forbidden 
-404 - Not Found 
+200 - OK /
+400 - Bad Request /
+401 - Unauthorized /
+403 - Forbidden /
+404 - Not Found /
 422 - Unprocessable
 
 - GET drinks (GET Method) - public endpoint:
 
-This endpoint will only retrive the drink's title.
+This endpoint will only retrive  drink's title.
 
 ```bash
 http://127.0.0.1:5000/drinks
@@ -115,9 +115,9 @@ It will retrive all drink's titles and its correspondent recipes from database.
 http://127.0.0.1:5000/drinks-detail
 ```
 
-- Add drinks (POST Method) - it requires permission ( post:drinks):
+- Add drinks (POST Method) - it requires permission post:drinks:
 
-To insert a new drink into database it will require to pass at leas
+
 
 ```bash
 http://127.0.0.1:5000/post-drinks
@@ -130,7 +130,7 @@ body:
      Title: 'anyTitle',
      recipe: {
           color: "ingredient color",
-          name: "ingrediente\ name",
+          name: "ingredient name",
           part: "how many parts"
 
      }
