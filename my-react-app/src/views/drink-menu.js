@@ -48,7 +48,6 @@ const DrinkMenu = () => {
          </table>
        </div>
       )} 
-      
     </div> 
   );
 };
