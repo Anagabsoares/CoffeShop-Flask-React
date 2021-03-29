@@ -52,7 +52,6 @@ export FLASK_ENV=development
 flask run
 ```
 
-
 ### Running Unittest 
 
 Tests have been created in order to test  the behavior of the endpoints.
@@ -62,8 +61,6 @@ In the project forlder, run the following:
 ```bash
 python3 test_api.py
 ```
-
-
 
 # RBAC and API testing
 
@@ -132,7 +129,6 @@ body:
           color: "ingredient color",
           name: "ingredient name",
           part: "how many parts"
-
      }
 }
 headers:
@@ -156,7 +152,6 @@ body:
           color: "ingredient color",
           name: "ingredient name",
           part: "how many parts"
-
      }
 }
 headers:
