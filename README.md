@@ -69,19 +69,20 @@ python test_api.py
 
 1. Login into app
 
-Acessing  the app and testisting  the endpoints that requires  specific permissions, two email accounts were created specially for reviewers. 
+Acessing  the app and testisting  the endpoints that requires  specific permissions, two email accounts were created specially for reviewers.
 
 Manager Login (can get details,  add, edit, remove drinks from database)
 
-* email: *****
-* password:****
+* email: themanagerfsnd@gmail.com
+* password: ManagerFSND123
 
 Barist login (can only get details):
 
-* email: *****
-* password:**
+* email: baristfsnd@gmail.com
+* password: BaristaFSND123
 
-The .env file contains JWT tokens in case yo want to test the api endpoints on your local machine.
+
+The .env file contains JWT tokens.
 
 2. API Endpoints
 
