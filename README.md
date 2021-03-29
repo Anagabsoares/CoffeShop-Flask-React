@@ -76,7 +76,7 @@ Manager Login (can get details,  add, edit, remove drinks from database)
 * email: themanagerfsnd@gmail.com
 * password: ManagerFSND123
 
-Barist login (can only get details):
+Barista login (can only get details):
 
 * email: baristfsnd@gmail.com
 * password: BaristaFSND123
