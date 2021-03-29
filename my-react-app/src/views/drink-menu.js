@@ -44,7 +44,6 @@ const DrinkMenu = () => {
                <tr>
                  <th scope="row" ></th>
                  <td>{drink}</td>
-  
                </tr>
              </tbody>
          </table>
