@@ -96,13 +96,89 @@ HTTP Status Code
 404 - Not Found 
 422 - Unprocessable
 
+- GET drinks (GET Method) - public endpoint:
+
+This endpoint will only retrive the drink's title.
+
+```bash
+http://127.0.0.1:5000/drinks
+```
+```bash
+{"success": true, 
+"drinks": ["Coffee", "Milkshake", "Cosmo", "Hot Chocolate"]}
+```
+- Get drinks detail  (GET Method) -it  requires permission ( get:drinks-details):
+
+It will retrive all drink's titles and its correspondent recipes from database.
+
+```bash
+http://127.0.0.1:5000/drinks-detail
+```
+
+- Add drinks (POST Method) - it requires permission ( post:drinks):
+
+To insert a new drink into database it will require to pass at leas
+
+```bash
+http://127.0.0.1:5000/post-drinks
+```
+
+Request requirements 
+```bash
+body:
+{
+     Title: 'anyTitle',
+     recipe: {
+          color: "ingredient color",
+          name: "ingrediente\ name",
+          part: "how many parts"
+
+     }
+}
+headers:
+{
+     'Content-Type': 'application/json',
+     'Authorization': 'Bearer ' + [ACCESS TOKEN]
+}
+```
+
+- Edit drink (PATCH Method) - it requires permission patch:drinks
+
+```bash
+http://127.0.0.1:5000/drinks-update/[id]
+```
+
+```bash
+body:
+{
+     Title: 'anyTitle',
+     recipe: {
+          color: "ingredient color",
+          name: "ingredient name",
+          part: "how many parts"
+
+     }
+}
+headers:
+{
+     'Content-Type': 'application/json',
+     'Authorization': 'Bearer ' + [ACCESS TOKEN]
+}
+```
+
+-Remove a drink (DELETE Method) - it requires permission delete:drinks
+
+```bash
+http://127.0.0.1:5000/drinks-delete/[id]
+```
+
+```bash
+headers:
+{
+     'Content-Type': 'application/json',
+     'Authorization': 'Bearer ' + [ACCESS TOKEN]
+}
+```
 
 
-
-
-
-
-
-
-
- 
+This project was create by Ana Gabriele Singh
