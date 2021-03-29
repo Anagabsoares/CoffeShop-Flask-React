@@ -53,7 +53,7 @@ flask run
 ```
 
 
-### Running Unittest on the API endpoints
+### Running Unittest 
 
 Tests have been created in order to test  the behavior of the endpoints.
 
