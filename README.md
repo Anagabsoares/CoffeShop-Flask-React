@@ -28,6 +28,7 @@ parts
 
 
 ## Installing Dependencies
+
 Python 3.9
 Follow instructions to install the latest version of python for your platform in the python docs
 
@@ -43,11 +44,32 @@ pip install -r requirements.txt
 
 This will install all of the required packages we selected within the requirements.txt file.
 
+In the project folder, run the following:
+
+```bash
+export FLASK_APP=app.py
+export FLASK_ENV=development
+flask run
+```
 
 
-# RBAC
+### Running Unittest on the API endpoints
 
-Acessing  the app and testisting  the endpoints that requires  specific permissions, two email accounts were created specially for reviewers.
+Tests have been created in order to test  the behavior of the endpoints.
+
+In the project forlder, run the following:
+
+```bash
+python test_api.py
+```
+
+
+
+# RBAC and API testing
+
+1. Login into app
+
+Acessing  the app and testisting  the endpoints that requires  specific permissions, two email accounts were created specially for reviewers. 
 
 Manager Login (can get details,  add, edit, remove drinks from database)
 
@@ -59,13 +81,24 @@ Barist login (can only get details):
 * email: *****
 * password:**
 
+The .env file contains JWT tokens in case yo want to test the api endpoints on your local machine.
 
+2. API Endpoints
 
-
-## Testing API endpoints 
-
-This app  is live at:
+Base URL:
 [https://coffeeshopcreepy.herokuapp.com/](https://coffeeshopcreepy.herokuapp.com/)
+
+HTTP Status Code
+200 - OK 
+400 - Bad Request 
+401 - Unauthorized 
+403 - Forbidden 
+404 - Not Found 
+422 - Unprocessable
+
+
+
+
 
 
 

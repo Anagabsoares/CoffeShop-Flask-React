@@ -33,4 +33,14 @@
   .result-block-container .result-block {
     opacity: 1;
   }
-  
+
+  .logo-coffe {
+    background-image: url("logo_transparent.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0px;
+    margin: 0px;
+    width: 150px;
+    height: 50px;
+
+  }

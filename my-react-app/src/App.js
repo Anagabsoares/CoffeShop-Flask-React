@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import { NavBar, Footer, Loading } from "./components";
-import { Home, Profile, ExternalApi } from "./views";
+import { Home, Profile } from "./views";
 import DrinkMenu from "./views/drink-menu"
 import SettingDrinks from "./views/set-drinks";
 import ProtectedRoute from "./auth/protected-route";
