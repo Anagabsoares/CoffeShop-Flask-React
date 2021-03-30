@@ -3,12 +3,8 @@ from sqlalchemy import Column, String, Integer
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-# DB_HOST = os.getenv('DB_HOST', 'localhost:5432')  
-# DB_USER = os.getenv('DB_USER', 'anagabrielesoares')  
-# DB_PASSWORD = os.getenv('DB_PASSWORD', 'postgres')  
-# DB_NAME = os.getenv('DB_NAME', 'coffeeShop')  
-# DATABASE_= 'postgresql+psycopg2://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
-DATABASE_URL= "postgres://ovunxygauyjgix:332cd4d6f59cb950ad5e33925caa408f9b20209d67118024063770c67ed9cec4@ec2-18-206-20-102.compute-1.amazonaws.com:5432/dad7un9d110hqg"
+
+DATABASE_URL= os.getenv('DATABASE_URL')
 db = SQLAlchemy()
 '''
 setup_db(app)
