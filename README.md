@@ -79,7 +79,7 @@ Barista login (can only get details):
 * password: BaristaFSND123
 
 
-The .env file contains JWT tokens.
+for reviewers: The setup.sh file contains JWT tokens.
 
 2. API Endpoints
 
