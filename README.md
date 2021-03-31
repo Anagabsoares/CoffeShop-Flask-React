@@ -70,13 +70,13 @@ To access and test the API endpoints  through the fontend interface, two emails 
 
 Manager Login (can get details,  add, edit, remove drinks from database)
 
-* email: themanagerfsnd@gmail.com
-* password: ManagerFSND123
+* email: ******
+* password: ****
 
 Barista login (can only get details):
 
-* email: baristfsnd@gmail.com
-* password: BaristaFSND123
+* email: ******
+* password: ******
 
 
 for reviewers: The setup.sh file contains JWT tokens.
