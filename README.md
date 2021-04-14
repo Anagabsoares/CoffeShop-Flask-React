@@ -16,7 +16,7 @@ The premise of the projct's API is to store, get, updade and delete  drinks reci
 The user can be assigned to barista or manager roles.
 The manager is allowed to access the menu (public get request), get drinks details (authorization required), delete drinks (authorization required), and update drinks (authorization required). The barista is only assigned to a public get-method request and to get drinks detail.
 
-Each drink will have the following attibutes:
+Each drink will have the following attributes:
 
 ```bash
 id
